@@ -90,7 +90,7 @@ replace the https link with your own link
 
 2. copy the authtoken line given to you and run it
 
-shoud look something like this `./ngrok authtoken awefioauw4u0239840293j023jf0j23f23kj`
+should look something like this `./ngrok authtoken awefioauw4u0239840293j023jf0j23f23kj`
 
 3. `./ngrok tcp 25565`
 
