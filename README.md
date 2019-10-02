@@ -56,6 +56,8 @@ Not strictly necessarily just for starting a server, but if you want to test it 
 
 4. Test by running `java -version`
 
+5. Make sure that it verifies that Java is installed (1.8)
+
 # Step 4
 
 1. Go to https://www.minecraft.net/en-us/download/server/
