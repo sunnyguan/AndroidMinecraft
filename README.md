@@ -205,7 +205,9 @@ On your Android, drag from the left side of your screen while you’re in termux
 2. Can my phone run it? 
 
 If it has at least 4GB of RAM and your WiFi is decent: Definitely
+
 If it has at least 2GB of RAM and your WiFi is decent: Maybe, maybe not
+
 If it has less than 2GB of RAM or your WiFi is very questionable: sorry : (
 
 3. Do I really have to run the commands for ngrok and Minecraft server every time I want to play?
