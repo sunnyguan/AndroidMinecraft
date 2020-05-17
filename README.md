@@ -196,7 +196,7 @@ Ctrl-x to exit, Y to save
 
 8. Start server and ngrok
 
-# Common questions from last thread that I probably should’ve added in
+# Common questions
 
 1. How do you start both the server AND ngrok? Don’t I have to stop one to start the other?
 
