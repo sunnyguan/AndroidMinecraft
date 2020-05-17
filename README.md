@@ -114,23 +114,23 @@ replace the https link with your own link if the version isn't 1.15.2
 2. download forge server
 `wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.15.1-30.0.51/forge-1.15.1-30.0.51-installer.jar`
 
-8. Rename it to make it easier
+3. Rename it to make it easier
 `mv forge* forge.jar`
 
-9. install server (it takes a while depending on your phone/wifi speed, took about half an hour on my Moto E2 and 8mbps wifi)
+4. install server (it takes a while depending on your phone/wifi speed, took about half an hour on my Moto E2 and 8mbps wifi)
 `java -jar forge.jar --installServer`
 
-10. run server, it will give you an error telling you to agree to eula.txt
+5. run server, it will give you an error telling you to agree to eula.txt
 `java -Xms512M -Xmx1024M -jar forge-1.15.1-30.0.51.jar`
 
 Open eula.txt by `nano eula.txt`, arrow down to the last line, delete false, replace with true, Ctrl-x to exit, Y to save.
 
-10.5. Rerun the previous command one eula.txt has been changed, it will take a while to generate a world 
+6. Rerun the previous command one eula.txt has been changed, it will take a while to generate a world 
 
-11. Rename the forge so it’s easier to start later
+7. Rename the forge so it’s easier to start later
 `mv forge-1.15.1-30.0.51.jar startForge.jar`
 
-12. `java -Xms1024M -Xmx3096M -jar startForge.jar`
+8. `java -Xms1024M -Xmx3096M -jar startForge.jar`
 (Note: adjust memory as needed, don’t give it 3G if your phone is a potato)
 
 # Step 5
