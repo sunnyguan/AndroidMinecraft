@@ -184,8 +184,10 @@ Importing world
 
 5. Go to your Download folder cd /storage/emulated/0/Download
 
-6. 
+6. Copying world folder to Termux
+
 forge: `cp -r yourWorldFolderName /data/data/com.termux/files/home/ubuntu-fs/root/forge`
+
 vanilla: `cp -r yourWorldFolderName /data/data/com.termux/files/home/ubuntu-fs/root/mc`
 
 7. `cd /data/data/com.termux/files/home/ubuntu-fs/root/forge`
