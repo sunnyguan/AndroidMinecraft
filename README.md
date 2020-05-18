@@ -1,6 +1,6 @@
 Made a post a while ago about how to host a Minecraft server on an Android device. Here are some updates with clearer steps and steps for loading in your own worlds and mods!
 
-# Android + Minecraft
+# Hosting Minecraft Server on Android
 
 connect with this on vanilla Minecraft 1.15.2 client
 
