@@ -1,10 +1,16 @@
-Made a post a while ago on r/Android about how to host a Minecraft server on an Android device. Here are some updates with clearer steps and steps for loading in your own worlds and mods!
+Made a post a while ago about how to host a Minecraft server on an Android device. Here are some updates with clearer steps and steps for loading in your own worlds and mods!
+
+# Demo: 0.tcp.ngrok.io:17349
+
+connect with this on vanilla Minecraft 1.15.2 client
 
 Some basics:
 
 1. No root required
 2. Time required: about half an hour actively working, about an hour max downloading files
 3. Result: works great on my OnePlus 6T (8GB RAM), no lag at all playing with friends with Forge
+4. Tip: If you don't want to read, scroll down to the bottom for a 30-step process to set up a vanilla Minecraft server
+5. Join 0.tcp.ngrok.io:17349 to try it out! Please do not try to do anything crazy (huge TNT test, infinite spawner, etc) as I am running this out of my phone. Max player 20, no PVP.
 
 # Requirements:
 
@@ -34,7 +40,7 @@ Some basics:
 2. Select Ubuntu on AnLinux and copy the code
 3. Run the command on Termux
 4. To start the server, we would have to run `./start-ubuntu.sh`
-   1. I personally renamed it to `s` by running this command `mv` [`start-ubuntu.sh`](https://start-ubuntu.sh) `s`
+   1. I personally renamed it to `s` by running this command `mv` `start-ubuntu.sh` `s`
    2. This allows me to get into Ubuntu by running just `./s`
 5. run `./s` to start the ubuntu machine
 6. VERY IMPORTANT: Drag down on your notification bar, there should be an option to “Acquire Wakelock” for Termux. This allows it to not be killed by the system and continue running in the background.
@@ -60,11 +66,12 @@ Some basics:
 
 # Step 3
 
-1. `add-apt-repository ppa:openjdk-r/ppa`
-2. `apt-get update`
-3. `apt-get install openjdk-8-jre`
-4. Test by running `java -version`
-5. Make sure that it verifies that Java is installed (1.8)
+1. `apt install software-properties-common`
+2. `add-apt-repository ppa:openjdk-r/ppa`
+3. `apt-get update`
+4. `apt-get install openjdk-8-jre`
+5. Test by running `java -version`
+6. Make sure that it verifies that Java is installed (1.8)
 
 # Step 4 (vanilla)
 
@@ -72,18 +79,23 @@ Some basics:
 2. Make a new folder for your minecraft directory `mkdir mc`, `cd mc` to go into the directory
 3. Go to [https://www.minecraft.net/en-us/download/server/](https://www.minecraft.net/en-us/download/server/)
 4. Right-click on the minecraft\_server link and copy link
-5. `wget -O minecraft\_server.jar https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar`
+5. `wget -O minecraft_server.jar https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar`
    1. replace the https link with your own link if the version isn't 1.15.2
-6. run `chmod +x minecraft\_server.jar`
-7. run `java -Xmx1024M -Xms1024M -jar minecraft\_server.jar nogui` to start the server
+6. run `chmod +x minecraft_server.jar`
+7. run `java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui` to start the server
    1. (Give more RAM if you have more; I set mine to 3 Gigabytes `-Xmx3G`)
+8. It will tell you to agree to eula.txt
+9. nano eula.txt
+10. change false to true
+11. Ctrl-x to save, y to exit
+12. run `java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui` to actually start the server (also allocate more RAM if you have more)
 
 # Step 4 (Forge)
 
 1. Make sure you’re at the home directory after starting ubuntu. If not, type `cd \~`
 2. `mkdir forge` to start a new directory, `cd forge` to go in
 3. download forge server
-   1. `wget` [`https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.15.1-30.0.51/forge-1.15.1-30.0.51-installer.jar`](https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.15.1-30.0.51/forge-1.15.1-30.0.51-installer.jar)
+   1. `wget` `https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.15.1-30.0.51/forge-1.15.1-30.0.51-installer.jar`
 4. Rename it to make it easier
    1. `mv forge* forge.jar`
 5. install server (it takes a while depending on your phone/wifi speed, took about half an hour on my Moto E2 and 8mbps wifi)
@@ -102,7 +114,7 @@ Some basics:
 
 1. Go to [ngrok.com/download](https://ngrok.com/download)
 2. Right-click and copy link for Linux (ARM64)
-3. `wget -O` [`ngrok.zip`](https://ngrok.zip) [`https://bin.equinox.io/a/nmkK3DkqZEB/ngrok-2.2.8-linux-arm64.zip`](https://bin.equinox.io/a/nmkK3DkqZEB/ngrok-2.2.8-linux-arm64.zip`)
+3. `wget -O` `ngrok.zip` `https://bin.equinox.io/a/nmkK3DkqZEB/ngrok-2.2.8-linux-arm64.zip`
    1. replace the https link with your own link
 4. `apt-get install zip unzip`
 5. `unzip ngrok.zip`
@@ -114,7 +126,7 @@ Some basics:
    1. should look something like this `./ngrok authtoken awefioauw4u0239840293j023jf0j23f23kj`
 3. `./ngrok tcp 25565`
 4. if a screen shows up with "Session Status online" in green, copy the address in forwarding after the tcp part
-   1. >!Forwarding                            tcp://0.tcp.ngrok.io:12345!<
+   1. "Forwarding                            tcp://0.tcp.ngrok.io:12345"
    2. copy the `0.tcp.ngrok.io:12345` section
 
 # Step 7
@@ -129,14 +141,18 @@ Some basics:
 2. When connecting over usb, copy it over to your Download folder
 3. back to termux
 4. if you are in ubuntu (started ubuntu) already, type exit to get out into the default termux layer
-5. Go to your Download folder cd /storage/emulated/0/Download
+5. Allow Termux to access your storage  `termux-setup-storage`
+   1. More details: this sets up a few symlinks in the `storage` folder which allows you to transfer files more easily
 6. Copying world folder to Termux
-   1. forge: `cp -r yourWorldFolderName /data/data/com.termux/files/home/ubuntu-fs/root/forge`
-   2. vanilla: `cp -r yourWorldFolderName /data/data/com.termux/files/home/ubuntu-fs/root/mc`
-7. `cd /data/data/com.termux/files/home/ubuntu-fs/root/forge`
-8. `nano` [`server.properties`](https://server.properties)
-9. find the line >!level-name=world!<
-10. change >!world!<into whatever your folder name is called
+   1. forge: `cp -r storage/downloads/yourWorldFolderName ubuntu-fs/root/mc/`
+   2. vanilla: `cp -r storage/downloads/yourWorldFolderName ubuntu-fs/root/forge/`
+7. Go back to your Minecraft folder
+   1. `cd ubuntu-fs/root/forge`
+   2. `cd ubuntu-fs/root/mc`
+8. Edit the server properties file to select your own world
+   1. `nano` `server.properties`
+9. find the line "level-name=world"
+10. change "world" into whatever your folder name is called
 11. Ctrl-x to exit, Y to save
 12. Start server and ngrok
 
@@ -161,8 +177,9 @@ Some basics:
       2. `./s` to get into Ubuntu
       3. `./m` to start Minecraft server
       4. Swipe on left, open another session
-      5. `./n` to start ngrok server
-      6. Open Minecraft on my computer, copy over the link from ngrok, wait for the server to start, connect!
+      5. `./s` to get into Ubuntu in the new session
+      6. `./n` to start ngrok server
+      7. Open Minecraft on my computer, copy over the link from ngrok, wait for the server to start, connect!
 4. Why does this work?
    1. Termux allows your phone to have a mini-Linux machine. Linux machines can run Minecraft servers. Ngrok allows you to port-forward your local server port (25565) onto a public port where everyone can join (so please enable your whitelist so people don’t come in and destroy your worlds).
 5. How do I use mods?
@@ -171,6 +188,19 @@ Some basics:
    1. I would recommend updating ngrok if it prompts you to. You just have to type `ctrl-u` and wait about a minute then restart ngrok. It won’t break anything as it’s just broadcasting your port.
 7. My server is not working and it’s not because of bad WiFi or bad phone specs, what can I do?
    1. If none of the tips above helped and nobody in the comments had the same problem, you can send me a message but make sure to include a screenshot (if applicable) and a description of your issue.
+
+# Overview of Commands:
+
+If you don't understand anything, try following the steps below to set up a vanilla 1.15.2 Minecraft server. An important thing to note is that some of these might take quite a long time. I would suggest keeping the screen on and the phone plugged in and waiting for the prompt to pop up before running the next command. For quality-of-life improvements and mods, read Step 4 and Common Questions.
+
+1. Download Termux and AnLinux on your Android from Google Play Store
+2. Select Ubuntu on AnLinux and copy the code
+3. Run the command in Termux
+4. Run `termux-setup-storage`
+5. Run `termux-wake-lock`
+6. Run `./start-ubuntu.sh`
+7. Run `wget https://github.com/sunnyguan/AndroidMinecraft/blob/master/minecraftSetup.sh`
+8. Run `./minecraftSetup.sh`
 
 # References:
 
