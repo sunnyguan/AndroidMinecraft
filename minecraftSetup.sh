@@ -1,6 +1,4 @@
 #!/bin/bash
-termux-wake-lock
-./start-ubuntu.sh
 apt install software-properties-common
 add-apt-repository ppa:openjdk-r/ppa
 apt-get update
