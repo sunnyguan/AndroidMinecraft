@@ -1,7 +1,7 @@
 #!/bin/bash
+apt-get update
 apt install software-properties-common
 add-apt-repository ppa:openjdk-r/ppa
-apt-get update
 apt-get install openjdk-8-jre nano zip unzip
 mkdir mc
 cd mc
