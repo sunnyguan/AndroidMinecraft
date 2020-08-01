@@ -12,3 +12,5 @@ wget -O ngrok.zip https://bin.equinox.io/a/nmkK3DkqZEB/ngrok-2.2.8-linux-arm64.z
 unzip ngrok.zip
 printf "cd mc\njava -Xmx1024MB -jar minecraft_server.jar nogui" > m
 printf "cd ngrok\n./ngrok tcp 25565" > n
+chmod +x m
+chmod +x n
