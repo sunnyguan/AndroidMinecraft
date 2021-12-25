@@ -12,14 +12,14 @@ USE_FORGE=${USE_FORGE:-no}
 read -p "Using ngrok ([yes]/no)?" USE_NGROK
 USE_NGROK=${USE_NGROK:-yes}
 
-if [ USE_NGROK = "yes" ] ; then
+if [ "$USE_NGROK" = "yes" ] ; then
   read -p "ngrok authtoken (required! login/signup on ngrok.com and find your authtoken): " AUTHTOKEN
 fi
 
 # forge server URL (1.18.1), update as necessary
 DEF_FORGE_INSTALLER="https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.1-39.0.8/forge-1.18.1-39.0.8-installer.jar"
 DEF_VANILLA_SERVER="https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/server.jar"
-if [ USE_FORGE = "yes" ] ; then
+if [ "$USE_FORGE" = "yes" ] ; then
   read -p "Custom Forge installer (leave blank for default: $DEF_FORGE_INSTALLER)? " FORGE_SERVER
   FORGE_SERVER=${FORGE_SERVER:-DEF_FORGE_INSTALLER}
 else
