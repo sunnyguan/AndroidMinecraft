@@ -80,6 +80,8 @@ if [ "$USE_NGROK" = true ] ; then
   wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz && tar -xvzf ngrok.tgz
   echo "./ngrok tcp 25565" > n
   chmod +x n
+  echo "NOTE: Please go to ngrok.com, login/signup, and run the authtoken command to authorize ngrok locally"
+  echo "      It should look something like ./ngrok authtoken 7FJB7s9O03jF..."
 fi
 
 
