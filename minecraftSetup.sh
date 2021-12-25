@@ -4,22 +4,34 @@
 
 # set to true if you want to use forge, update FORGE_SERVER below to the correct version if necessary
 # leave as false if using vanilla, update VANILLA_SERVER below if necessary
-USE_FORGE=false
+read -p "Using forge (yes/[no])? " USE_FORGE
+USE_FORGE=${USE_FORGE:-no}
 
 # set to false if you have your own port-forwarding setup
 # leave as true to forward local ip to online through ngrok so other people can join
-USE_NGROK=true
+read -p "Using ngrok ([yes]/no)?" USE_NGROK
+USE_NGROK=${USE_NGROK:-yes}
+
+if [ USE_NGROK = "yes" ] ; then
+  read -p "ngrok authtoken (required! login/signup on ngrok.com and find your authtoken): " AUTHTOKEN
+fi
 
 # forge server URL (1.18.1), update as necessary
-FORGE_SERVER="https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.1-39.0.8/forge-1.18.1-39.0.8-installer.jar"
-
-# current version (1.18.1), update as necessary
-VANILLA_SERVER="https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/server.jar"
+DEF_FORGE_INSTALLER="https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.1-39.0.8/forge-1.18.1-39.0.8-installer.jar"
+DEF_VANILLA_SERVER="https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/server.jar"
+if [ USE_FORGE = "yes" ] ; then
+  read -p "Custom Forge installer (leave blank for default: $DEF_FORGE_INSTALLER)? " FORGE_SERVER
+  FORGE_SERVER=${FORGE_SERVER:-DEF_FORGE_INSTALLER}
+else
+  read -p "Custom vanilla server (leave blank for default: $DEF_VANILLA_SERVER)? " VANILLA_SERVER
+  VANILLA_SERVER=${VANILLA_SERVER:-DEF_VANILLA_SERVER}
+fi
 
 # if you see an error about class version in the future, 
 # check https://stackoverflow.com/questions/9170832/list-of-java-class-file-format-major-version-numbers
 # and update this to the appropriate version
-JDK_VERSION=17
+read -p "JRE Version (default is 17 for <=1.18)? " JDK_VERSION
+JDK_VERSION=${JDK_VERSION:-17}
 
 # don't need to edit this
 EXEC_SERVER_NAME="minecraft_server.jar"
@@ -59,8 +71,7 @@ if [ "$USE_NGROK" = true ] ; then
   wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz && tar -xvzf ngrok.tgz
   echo "./ngrok tcp 25565" > n
   chmod +x n
-  echo "NOTE: Please go to ngrok.com, login/signup, and run the authtoken command to authorize ngrok locally"
-  echo "      It should look something like ./ngrok authtoken 7FJB7s9O03jF..."
+  ./ngrok authtoken $AUTHTOKEN
 fi
 
 
