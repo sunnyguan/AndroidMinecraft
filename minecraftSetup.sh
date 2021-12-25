@@ -1,25 +1,5 @@
 #!/bin/bash
 
-##### UBUNTU INSTALLATION #####
-
-echo "STATUS: Setting up Ubuntu"
-pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh
-
-retVal=$?
-if [ $retVal -ne 0 ]; then
-  echo "WARN: first try failed, trying again"
-  pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh
-fi
-
-retVal=$?
-if [ $retVal -ne 0 ]; then
-  echo "ERROR: Could not install ubuntu correctly, aborting."
-  exit $retVal
-fi
-
-echo "STATUS: Starting Ubuntu"
-./start-ubuntu.sh
-
 ##### USER CONFIGURATIONS #####
 
 # set to true if you want to use forge, update FORGE_SERVER below to the correct version if necessary
