@@ -1,8 +1,8 @@
 #!/bin/bash
 apt-get update
-apt install software-properties-common
-add-apt-repository ppa:openjdk-r/ppa
-apt-get install openjdk-8-jre nano zip unzip
+apt install software-properties-common -y
+add-apt-repository ppa:openjdk-r/ppa -y
+apt-get install openjdk-8-jre zip unzip -y
 mkdir mc
 cd mc
 wget -O minecraft_server.jar https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar
