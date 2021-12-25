@@ -50,7 +50,7 @@ else
   wget -O $EXEC_SERVER_NAME $VANILLA_SERVER
   echo "cd mc && java -Xmx1G -jar ${EXEC_SERVER_NAME} nogui" > ../m
 fi
-chmod +x m
+chmod +x ../m
 
 # ngrok download and setup
 if [ "$USE_NGROK" = true ] ; then
