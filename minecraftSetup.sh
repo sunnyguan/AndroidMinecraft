@@ -4,7 +4,7 @@
 
 # set to true if you want to use forge, update FORGE_SERVER below to the correct version if necessary
 # leave as false if using vanilla, update VANILLA_SERVER below if necessary
-USE_FORGE=true
+USE_FORGE=false
 
 # set to false if you have your own port-forwarding setup
 # leave as true to forward local ip to online through ngrok so other people can join
