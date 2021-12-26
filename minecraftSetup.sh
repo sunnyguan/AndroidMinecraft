@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pkg install openjdk-17
+
 ##### USER CONFIGURATIONS #####
 
 # set to true if you want to use forge, update FORGE_SERVER below to the correct version if necessary
