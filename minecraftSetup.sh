@@ -1,7 +1,5 @@
 #!/bin/bash
 
-pkg install openjdk-17 zip unzip -y
-
 ##### USER CONFIGURATIONS #####
 
 # set to true if you want to use forge, update FORGE_SERVER below to the correct version if necessary
@@ -35,6 +33,8 @@ fi
 EXEC_SERVER_NAME="minecraft_server.jar"
 
 ##### MINECRAFT/NGROK INSTALLATION #####
+
+pkg install openjdk-17 zip unzip -y
 
 # minecraft server download and setup
 echo "STATUS: setting up Minecraft Server"
