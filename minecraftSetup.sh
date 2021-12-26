@@ -51,7 +51,7 @@ echo "STATUS: setting up Minecraft Server"
 mkdir mc
 cd mc
 echo "eula=true" > eula.txt
-if [ "$USE_FORGE" = true ] ; then
+if [ "$USE_FORGE" = "yes" ] ; then
   wget $FORGE_SERVER
   installer_jar=$(echo $FORGE_SERVER | rev | cut -d '/' -f 1 | rev)
   exec_jar=$(echo $installer_jar | sed -e 's/-installer//g')
