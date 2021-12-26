@@ -65,7 +65,7 @@ fi
 chmod +x ../m
 
 # ngrok download and setup
-if [ "$USE_NGROK" = true ] ; then
+if [ "$USE_NGROK" = "yes" ] ; then
   echo "STATUS: setting up ngrok"
   cd ..
   wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz && tar -xvzf ngrok.tgz
