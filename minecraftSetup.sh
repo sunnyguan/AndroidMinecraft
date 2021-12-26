@@ -1,6 +1,5 @@
 #!/bin/bash
 
-pkg update && pkg upgrade -y
 pkg install openjdk-17 zip unzip
 
 ##### USER CONFIGURATIONS #####
