@@ -1,6 +1,7 @@
 #!/bin/bash
 
-pkg install openjdk-17
+pkg update && pkg upgrade -y
+pkg install openjdk-17 zip unzip
 
 ##### USER CONFIGURATIONS #####
 
@@ -42,13 +43,6 @@ EXEC_SERVER_NAME="minecraft_server.jar"
 
 ##### MINECRAFT/NGROK INSTALLATION #####
 
-# install openjdk
-echo "STATUS: installing openjdk-${JDK_VERSION}" 
-apt-get update
-apt install software-properties-common -y
-add-apt-repository ppa:openjdk-r/ppa -y
-apt-get install openjdk-$JDK_VERSION-jre-headless zip unzip -y
-
 # minecraft server download and setup
 echo "STATUS: setting up Minecraft Server"
 mkdir mc
@@ -72,7 +66,7 @@ chmod +x ../m
 if [ "$USE_NGROK" = "yes" ] ; then
   echo "STATUS: setting up ngrok"
   cd ..
-  wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz && tar -xvzf ngrok.tgz
+  wget -O ngrok.zip https://bin.equinox.io/a/e93TBaoFgZw/ngrok-2.2.8-linux-arm.zip && unzip ngrok.zip && chmod +x ngrok
   echo "./ngrok tcp -region=$NGROK_REGION 25565" > n
   chmod +x n
   ./ngrok authtoken $AUTHTOKEN
