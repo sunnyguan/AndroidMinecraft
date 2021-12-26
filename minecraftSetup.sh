@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pkg install openjdk-17 zip unzip
+pkg install openjdk-17 zip unzip -y
 
 ##### USER CONFIGURATIONS #####
 
@@ -30,12 +30,6 @@ else
   read -p "Custom vanilla server (leave blank for default: $DEF_VANILLA_SERVER)? " VANILLA_SERVER
   VANILLA_SERVER=${VANILLA_SERVER:-$DEF_VANILLA_SERVER}
 fi
-
-# if you see an error about class version in the future, 
-# check https://stackoverflow.com/questions/9170832/list-of-java-class-file-format-major-version-numbers
-# and update this to the appropriate version
-read -p "JRE Version (default is 17 for <=1.18)? " JDK_VERSION
-JDK_VERSION=${JDK_VERSION:-17}
 
 # don't need to edit this
 EXEC_SERVER_NAME="minecraft_server.jar"
