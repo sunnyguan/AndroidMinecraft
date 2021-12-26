@@ -14,7 +14,8 @@ USE_NGROK=${USE_NGROK:-yes}
 
 if [ "$USE_NGROK" = "yes" ] ; then
   read -p "ngrok authtoken (REQUIRED see https://dashboard.ngrok.com/get-started/your-authtoken): " AUTHTOKEN
-  read -p "ngrok region ([us]/eu/ap/au/sa/jp/in): " REGION
+  read -p "ngrok region ([us]/eu/ap/au/sa/jp/in): " NGROK_REGION
+  NGROK_REGION=${NGROK_REGION:-us}
 fi
 
 # forge server URL (1.18.1), update as necessary
@@ -70,7 +71,7 @@ if [ "$USE_NGROK" = "yes" ] ; then
   echo "STATUS: setting up ngrok"
   cd ..
   wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz && tar -xvzf ngrok.tgz
-  echo "./ngrok -region $REGION tcp 25565" > n
+  echo "./ngrok -region $NGROK_REGION tcp 25565" > n
   chmod +x n
   ./ngrok authtoken $AUTHTOKEN
 fi
