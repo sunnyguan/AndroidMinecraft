@@ -21,10 +21,10 @@ DEF_FORGE_INSTALLER="https://maven.minecraftforge.net/net/minecraftforge/forge/1
 DEF_VANILLA_SERVER="https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/server.jar"
 if [ "$USE_FORGE" = "yes" ] ; then
   read -p "Custom Forge installer (leave blank for default: $DEF_FORGE_INSTALLER)? " FORGE_SERVER
-  FORGE_SERVER=${FORGE_SERVER:-DEF_FORGE_INSTALLER}
+  FORGE_SERVER=${FORGE_SERVER:-$DEF_FORGE_INSTALLER}
 else
   read -p "Custom vanilla server (leave blank for default: $DEF_VANILLA_SERVER)? " VANILLA_SERVER
-  VANILLA_SERVER=${VANILLA_SERVER:-DEF_VANILLA_SERVER}
+  VANILLA_SERVER=${VANILLA_SERVER:-$DEF_VANILLA_SERVER}
 fi
 
 # if you see an error about class version in the future, 
