@@ -45,7 +45,7 @@ if [ "$USE_FORGE" = "yes" ] ; then
   wget $FORGE_SERVER
   installer_jar=$(echo $FORGE_SERVER | rev | cut -d '/' -f 1 | rev)
   # exec_jar=$(echo $installer_jar | sed -e 's/-installer//g')
-  java -jar $EXEC_SERVER_NAME --installServer
+  java -jar $installer_jar --installServer
   # mv $exec_jar $EXEC_SERVER_NAME
   # rm $installer_jar
   echo "cd mc && ./run.sh" > ../m
